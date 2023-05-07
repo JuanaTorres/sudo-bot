@@ -1,0 +1,60 @@
+lockfileVersion: 5.4
+
+specifiers:
+  dotenv: ^16.0.3
+  eris: ^0.17.2
+  lunr: ^2.3.9
+
+dependencies:
+  dotenv: 16.0.3
+  eris: 0.17.2
+  lunr: 2.3.9
+
+packages:
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /eris/0.17.2:
+    resolution: {integrity: sha512-OzffDSL81VooFXfRn56ienSg7J6fagoN8WdkmCHjn0B9a4jUA3bVouMztQiaXT54jHV5jaX9D0mJ/b9/0mFoVg==}
+    engines: {node: '>=10.4.0'}
+    dependencies:
+      ws: 8.13.0
+    optionalDependencies:
+      opusscript: 0.0.8
+      tweetnacl: 1.0.3
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
+  /lunr/2.3.9:
+    resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
+    dev: false
+
+  /opusscript/0.0.8:
+    resolution: {integrity: sha512-VSTi1aWFuCkRCVq+tx/BQ5q9fMnQ9pVZ3JU4UHKqTkf0ED3fKEPdr+gKAAl3IA2hj9rrP6iyq3hlcJq3HELtNQ==}
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /tweetnacl/1.0.3:
+    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /ws/8.13.0:
+    resolution: {integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: false
