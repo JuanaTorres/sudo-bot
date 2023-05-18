@@ -1,7 +1,9 @@
 const fetchUtils = require("./ops/fetchUtils");
 const adminUtils = require("./ops/admin");
+const userUtils = require("./ops/user");
 
 const setupCommands = (botIO, estamos) => {
+  // usermod
   if (botIO.match("\\s(usermod)*(\\s[^\\s\\n]+)")) {
     const umodSplit = botIO._msg.content
       .trim(/\s+/)
@@ -13,6 +15,17 @@ const setupCommands = (botIO, estamos) => {
     switch (umodSplit[0]) {
       case "-m":
       case "--mute":
+        break;
+      case "-n":
+      case "--rename":
+      case "--name":
+      case "--nick":
+      case "--nickname":
+        userUtils.changeNicknameNotSemester(
+          botIO,
+          umodSplit[1].replace(/\<\@|\>/gm, ""),
+          umodSplit[2]
+        );
         break;
       case "-um":
       case "--unmute":
@@ -28,12 +41,18 @@ const setupCommands = (botIO, estamos) => {
       case "--unban":
         adminUtils.unbanMemberFromQuery(botIO, umodSplit[1], (options = {}));
         break;
+      case "-h":
+      case "--help":
+        console.log("pidieron ayuda :V")
+        break;
     }
 
     estamos.melos = true;
     return;
   }
 
+  // grep
+  // TODO: agregarle su comandito de --help
   if (botIO._prefixRegexBuilder("\\s(grep)*(\\s[^\\s\\n]+)")) {
     const grepRegExec = botIO
       ._prefixRegexBuilder("\\s(grep)*(\\s[^\\n]+)")
@@ -54,7 +73,7 @@ const setupCommands = (botIO, estamos) => {
 
   const errorMsgs = [
     "Deje de inventar comandos",
-    "¿Qué? Intente denuevo",
+    "¿Qué? Intente de nuevo",
     "Nones, no conozco ese comando",
     "Algo escribió mal, porque ese comando no existe",
     "Sea serio, ese comando no existe",

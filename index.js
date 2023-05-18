@@ -1,10 +1,9 @@
-// Require the Eris library
 const Eris = require("eris");
 const responses = require("./responses");
 const commands = require("./commands");
 const { BotIOManager } = require("./ops/interaction");
 
-// Load env variables
+// Cargamos las variables de entorno (Archivo .env)
 require("dotenv").config();
 
 // Creamos un nuevo "Cliente" (Bot) con Eris
@@ -21,7 +20,7 @@ console.log("Preparando Bot...");
 const botIO = new BotIOManager(bot, "sudo", false);
 
 bot.on("messageCreate", (msg) => {
-  // Chequiamos que A) El mensaje no sea del Bot y B) Que esté usanandoo el prefix
+  // Chequiamos que A) El mensaje no sea del Bot y B) Que esté usando el prefix
   if (
     msg.author.id !== bot.user.id &&
     msg.content.match(botIO._prefixRegexBuilder(""))
