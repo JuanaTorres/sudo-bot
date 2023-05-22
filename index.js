@@ -2,9 +2,15 @@ const Eris = require("eris");
 const responses = require("./responses");
 const commands = require("./commands");
 const { BotIOManager } = require("./ops/interaction");
+const { Configuration, OpenAIApi } = require("openai");
 
 // Cargamos las variables de entorno (Archivo .env)
 require("dotenv").config();
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_KEY,
+});
+const openai = new OpenAIApi(configuration);
 
 // Creamos un nuevo "Cliente" (Bot) con Eris
 const bot = Eris(`Bot ${process.env.DISCORD_TOKEN}`, {
@@ -17,9 +23,9 @@ console.log("Preparando Bot...");
   botIO es un objeto que simplifica el I/O
   Y le mandamos el prefijo, que en este caso es "sudo"
 */
-const botIO = new BotIOManager(bot, "sudo", false);
+const botIO = new BotIOManager(bot, openai, "sudo", false);
 
-bot.on("messageCreate", (msg) => {
+bot.on("messageCreate", async (msg) => {
   // Chequiamos que A) El mensaje no sea del Bot y B) Que esté usando el prefix
   if (
     msg.author.id !== bot.user.id &&
@@ -29,10 +35,12 @@ bot.on("messageCreate", (msg) => {
 
     botIO._msg = msg; // Acomodamos nuestro botIO con el mensaje entrante
 
+    botIO.typing();
+
     let estamos = { melos: false }; // Para frenar al bot de hacer if .. else si ya decidió qué hacer
     responses(botIO, estamos);
     if (!estamos.melos) {
-      commands(botIO, estamos);
+      await commands(botIO, estamos);
     }
   }
 });

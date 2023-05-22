@@ -17,6 +17,12 @@ class BotIOManager {
   _msg;
 
   /**
+   * El objeto que representa el cliente de OpenAI
+   * @private
+   */
+  _openai;
+
+  /**
    * El prefijo que se utilizará para las interacciones
    * @private
    * @type {string}
@@ -33,11 +39,13 @@ class BotIOManager {
   /**
    * Constructor de la clase BotIOManager.
    * @param {import("eris").Client} bot - El objeto Client que se está utilizando.
+   * @param openai - El cliente de OpenAI configurado
    * @param {string} prefix - El prefijo que se utilizará para las interacciones.
    * @param {boolean} log - Activar o desactivar logging en el bot.
    */
-  constructor(bot, prefix, log) {
+  constructor(bot, openai, prefix, log) {
     this._bot = bot;
+    this._openai = openai;
     this._prefix = prefix;
     this._log = log;
   }
