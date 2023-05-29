@@ -11,8 +11,8 @@ const setupCommands = (botIO, estamos) => {
     console.log(umodSplit);
 
     switch (umodSplit[0]) {
-      case "-m":
-      case "--mute":
+      case "-m"|| "--mute":
+        adminUtils.muteMemberFromMention(botIO, umodSplit[1], (options = {}));
         break;
       case "-um":
       case "--unmute":

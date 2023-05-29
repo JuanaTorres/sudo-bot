@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "discord": "^0.8.2",
     "dotenv": "^16.0.3",
     "eris": "^0.17.2",
     "lunr": "^2.3.9"
